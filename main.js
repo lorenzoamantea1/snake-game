@@ -4,7 +4,7 @@ let resolution = 20;
 let speed = 5;
 
 function setup() {
-    createCanvas(400, 400);
+    createCanvas(700, 700);
     snake = new Snake();
     food = new Food();
 }
@@ -12,9 +12,8 @@ function setup() {
 function draw() {
 
     speed = 5+(snake.points)/2
-    
     frameRate(speed);
-    
+
     scale(resolution);
     background(220);
 
@@ -31,13 +30,13 @@ function draw() {
 }
 
 function keyPressed() {
-    if (keyCode === UP_ARROW) {
+    if (keyCode === 87) { 
         snake.setDir(0, -1);
-    } else if (keyCode === DOWN_ARROW) {
+    } else if (keyCode === 83) { 
         snake.setDir(0, 1);
-    } else if (keyCode === LEFT_ARROW) {
+    } else if (keyCode === 65) { 
         snake.setDir(-1, 0);
-    } else if (keyCode === RIGHT_ARROW) {
+    } else if (keyCode === 68) { 
         snake.setDir(1, 0);
     }
 }

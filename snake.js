@@ -1,5 +1,5 @@
 class Snake {
-    constructor(gridWidth = 20, gridHeight = 20) {
+    constructor(gridWidth = 35, gridHeight = 35) {
         this.gridWidth = gridWidth;
         this.gridHeight = gridHeight;
         this.reset();
@@ -18,7 +18,7 @@ class Snake {
         head.y += this.ydir;
 
         if (this.isGameOver(head)) {
-            console.log("Game Over");
+            console.log("Snake: update - Game Over");
             this.reset(); 
             return true; 
         }
@@ -51,15 +51,17 @@ class Snake {
         this.xdir = x;
         this.ydir = y;
     }
-
-    grow() {
-        this.body.push(this.body[this.body.length - 1].copy()); 
+    grow(len) {
+        for (let i = 0; i < len; i++) {
+            this.body.push(this.body[this.body.length - 1].copy());
+        }
         this.points++
     }
 
     eat(food) {
         if (this.body[0].x === food.position.x && this.body[0].y === food.position.y) {
-            this.grow();
+            this.grow(food.type);
+            console.log("Snake: eat -",food.type);
             return true;
         }
         return false;
