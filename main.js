@@ -7,6 +7,7 @@ function setup() {
     createCanvas(700, 700);
     snake = new Snake();
     food = new Food();
+    enemy = new Enemy();
 }
 
 function draw() {
@@ -18,14 +19,26 @@ function draw() {
     background(220);
 
     snake.update()
+
+    const target = food.position // snake.body[0]
+    enemy.update(target);
+
     if (snake.eat(food)) {
         food = new Food();
     }
 
-    snake.show();
-    food.show();
+    if (enemy.eat(food)) {
+        food = new Food();
+    }
+
+    if (enemy.checkCollision(snake)) {
+        console.log("Game Over - Enemy Collision");
+        snake.reset();
+    }
 
     snake.show();
+    food.show();
+    enemy.show();
 
 }
 
