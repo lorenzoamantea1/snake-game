@@ -11,9 +11,10 @@ function setup() {
 }
 
 function draw() {
+    snake.checkBoostStatus();
 
-    speed = 5+(snake.points)/2
-    frameRate(speed);
+    let currentSpeed = 5 + (snake.points / 2) + (snake.boostActive ? speed * 2 : speed);
+    frameRate(currentSpeed);
 
     scale(resolution);
     background(220);
@@ -43,13 +44,15 @@ function draw() {
 }
 
 function keyPressed() {
-    if (keyCode === 87) { 
+    if (keyCode === 87) {
         snake.setDir(0, -1);
-    } else if (keyCode === 83) { 
+    } else if (keyCode === 83) {
         snake.setDir(0, 1);
-    } else if (keyCode === 65) { 
+    } else if (keyCode === 65) {
         snake.setDir(-1, 0);
-    } else if (keyCode === 68) { 
+    } else if (keyCode === 68) {
         snake.setDir(1, 0);
+    } else if (key === 'b') {
+        snake.activateBoost();
     }
 }

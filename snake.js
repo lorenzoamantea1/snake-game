@@ -2,14 +2,23 @@ class Snake {
     constructor(gridWidth = 35, gridHeight = 35) {
         this.gridWidth = gridWidth;
         this.gridHeight = gridHeight;
+
+        this.boostActive = false;
+        this.boostDuration = 15000;
+        this.boostStartTime = 0;
+
         this.reset();
     }
 
     reset() {
-        this.body = [createVector(0,0)];
+        this.body = [createVector(0, 0)];
         this.xdir = 0;
         this.ydir = 0;
         this.points = 0;
+
+        this.boostActive = false;
+        this.boostDuration = 15000;
+        this.boostStartTime = 0;
     }
 
     update() {
@@ -19,14 +28,29 @@ class Snake {
 
         if (this.isGameOver(head)) {
             console.log("Snake: update - Game Over");
-            this.reset(); 
-            return true; 
+            this.reset();
+            return true;
         }
 
         this.body.unshift(head);
         this.body.pop();
 
         return false;
+    }
+
+    activateBoost() {
+        if (this.boostActive != true) {
+            this.boostActive = true;
+            console.log("Snake: activateBoost - Boost Activated");
+            this.boostStartTime = millis();
+        }
+    }
+
+    checkBoostStatus() {
+        if (this.boostActive && millis() - this.boostStartTime > this.boostDuration) {
+            this.boostActive = false;
+            console.log("Snake: checkBoostStatus - Boost Ended");
+        }
     }
 
     isGameOver(head) {
@@ -39,14 +63,14 @@ class Snake {
                 return true;
             }
         }
-        
-        return false; 
+
+        return false;
     }
 
     setDir(x, y) {
         if (this.body.length > 1) {
-            if (x !== 0 && this.xdir !== 0) return; 
-            if (y !== 0 && this.ydir !== 0) return; 
+            if (x !== 0 && this.xdir !== 0) return;
+            if (y !== 0 && this.ydir !== 0) return;
         }
         this.xdir = x;
         this.ydir = y;
@@ -61,12 +85,12 @@ class Snake {
     eat(food) {
         if (this.body[0].x === food.position.x && this.body[0].y === food.position.y) {
             this.grow(food.type);
-            console.log("Snake: eat -",food.type);
+            console.log("Snake: eat -", food.type);
             return true;
         }
         return false;
     }
-    
+
     show() {
         noStroke();
         fill(0);

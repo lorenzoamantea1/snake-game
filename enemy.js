@@ -37,7 +37,7 @@ class Enemy {
     eat(food) {
         if (this.body[0].x === food.position.x && this.body[0].y === food.position.y) {
             this.grow(food.type);
-            console.log("Enemy: eat -",food.type);
+            console.log("Enemy: eat -", food.type);
             return true;
         }
         return false;
