@@ -33,8 +33,13 @@ function draw() {
     }
 
     if (enemy.checkCollision(snake)) {
-        console.log("Game Over - Enemy Collision");
-        snake.reset();
+        if (snake.body.length > enemy.body.lengthd) {
+            enemy.reset();
+            console.log("Kill - Enemy killed");
+        } else {
+            console.log("Game Over - Enemy Collision");
+            snake.reset();
+        }
     }
 
     snake.show();
