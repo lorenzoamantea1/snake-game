@@ -13,7 +13,7 @@ function setup() {
 function draw() {
     snake.checkBoostStatus();
 
-    let currentSpeed = 5 + (snake.points / 2) + (snake.boostActive ? speed * 2 : speed);
+    let currentSpeed = speed + (snake.points / 2) + (snake.boostActive ? speed * 2 : speed);
     frameRate(currentSpeed);
 
     scale(resolution);
