@@ -25,21 +25,19 @@ function draw() {
     snake.update()
     if (!snake.xdir == 0 || !snake.ydir == 0) {
         enemy.update(target);
-    } else {
-        console.log("[Main]: Move with WASD to start")
     }
 
     if (snake.eat(food) || enemy.eat(food)) {
         food = new Food();
     }
-
     if (enemy.checkCollision(snake)) {
         if (snake.body.length > enemy.body.length) {
             snake.grow(enemy.body.length);
             console.log("[Main]: Enemy killed -",enemy.body.length);
             enemy.reset();
         } else {
-            console.log("[Main]: Game Over - Enemy Collision");
+            enemy.grow(snake.body.length);
+            console.log("[Main]: Game Over - Enemy Collision -",enemy.body.length);
             snake.reset();
         }
     }
