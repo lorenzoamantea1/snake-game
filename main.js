@@ -1,7 +1,9 @@
-let snake;
-let food;
 let resolution = 20;
 let speed = 5;
+
+let snake;
+let enemy;
+let food;
 
 function setup() {
     createCanvas(700, 700);
@@ -19,25 +21,25 @@ function draw() {
     scale(resolution);
     background(220);
 
-    snake.update()
-
     const target = food.position // snake.body[0]
-    enemy.update(target);
-
-    if (snake.eat(food)) {
-        food = new Food();
+    snake.update()
+    if (!snake.xdir == 0 || !snake.ydir == 0) {
+        enemy.update(target);
+    } else {
+        console.log("[Main]: Move with WASD to start")
     }
 
-    if (enemy.eat(food)) {
+    if (snake.eat(food) || enemy.eat(food)) {
         food = new Food();
     }
 
     if (enemy.checkCollision(snake)) {
-        if (snake.body.length > enemy.body.lengthd) {
+        if (snake.body.length > enemy.body.length) {
+            snake.grow(enemy.body.length);
+            console.log("[Main]: Enemy killed -",enemy.body.length);
             enemy.reset();
-            console.log("Kill - Enemy killed");
         } else {
-            console.log("Game Over - Enemy Collision");
+            console.log("[Main]: Game Over - Enemy Collision");
             snake.reset();
         }
     }
@@ -45,7 +47,6 @@ function draw() {
     snake.show();
     food.show();
     enemy.show();
-
 }
 
 function keyPressed() {

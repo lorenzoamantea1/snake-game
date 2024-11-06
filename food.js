@@ -3,7 +3,7 @@ class Food {
     constructor() {
         this.position = createVector(floor(random(width / resolution)), floor(random(height / resolution)));
         this.type = floor(random(1, 5));
-        console.log("Food: Spawn -", this.type);
+        console.log("[Food]: Spawn -", this.type);
     }
 
     show() {

@@ -11,7 +11,11 @@ class Snake {
     }
 
     reset() {
-        this.body = [createVector(0, 0)];
+        this.body = [
+            createVector(0, 0),
+            createVector(0, 0),
+            createVector(0, 0)
+        ];
         this.xdir = 0;
         this.ydir = 0;
         this.points = 0;
@@ -27,9 +31,11 @@ class Snake {
         head.y += this.ydir;
 
         if (this.isGameOver(head)) {
-            console.log("Snake: update - Game Over");
-            this.reset();
-            return true;
+            if (!this.xdir == 0 || !this.ydir == 0) {
+                console.log("[Snake]: update - Game Over");
+                this.reset();
+                return true;
+            }
         }
 
         this.body.unshift(head);
@@ -41,7 +47,7 @@ class Snake {
     activateBoost() {
         if (this.boostActive != true) {
             this.boostActive = true;
-            console.log("Snake: activateBoost - Boost Activated");
+            console.log("[Snake]: activateBoost - Boost Activated");
             this.boostStartTime = millis();
         }
     }
@@ -49,7 +55,7 @@ class Snake {
     checkBoostStatus() {
         if (this.boostActive && millis() - this.boostStartTime > this.boostDuration) {
             this.boostActive = false;
-            console.log("Snake: checkBoostStatus - Boost Ended");
+            console.log("[Snake]: checkBoostStatus - Boost Ended");
         }
     }
 
@@ -85,7 +91,7 @@ class Snake {
     eat(food) {
         if (this.body[0].x === food.position.x && this.body[0].y === food.position.y) {
             this.grow(food.type);
-            console.log("Snake: eat -", food.type);
+            console.log("[Snake]: eat -", food.type);
             return true;
         }
         return false;
