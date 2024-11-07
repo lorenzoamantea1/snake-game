@@ -5,11 +5,84 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Snake Game</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.0/p5.min.js" integrity="sha512-q0pQ5+tDUElSVqirQ85OnmLKQvPjeYPlRjJq2dsOwhrGxGjFl0/c36Z+O5DhZNkFMvyGVSpNZ+Q+pjhG0U47iw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            background-color: #f0f0f0;
+        }
+        canvas {
+            border: 1px solid black;
+        }
+        #control-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 20px;
+            margin: 5px;
+            text-align: center;
+            font-size: 20px;
+            cursor: pointer;
+            border-radius: 8px;
+            width: 80px;
+        }
+        .row {
+            display: flex;
+        }
+        .button:active {
+            background-color: #45a049;
+        }
+    </style>
 </head>
 <body>
     <script src="snake.js"></script>
     <script src="enemy.js"></script>
     <script src="food.js"></script>
     <script src="main.js"></script>
+
+    <div id="control-container">
+        <div class="row">
+            <button class="button" id="w-button">W</button>
+        </div>
+        <div class="row">
+            <button class="button" id="a-button">A</button>
+            <button class="button" id="s-button">S</button>
+            <button class="button" id="d-button">D</button>
+        </div>
+    </div>
+    <script>
+        document.getElementById('w-button').addEventListener('click', function() {
+            simulateKeyPress(87); 
+        });
+        document.getElementById('a-button').addEventListener('click', function() {
+            simulateKeyPress(65);  
+        });
+        document.getElementById('s-button').addEventListener('click', function() {
+            simulateKeyPress(83);  
+        });
+        document.getElementById('d-button').addEventListener('click', function() {
+            simulateKeyPress(68);  
+        });
+        function simulateKeyPress(keyCode) {
+            var event = new KeyboardEvent('keydown', {
+                key: String.fromCharCode(keyCode),
+                code: keyCode,
+                keyCode: keyCode,
+                which: keyCode,
+                bubbles: true
+            });
+            document.dispatchEvent(event);
+        }
+    </script>
 </body>
 </html>
