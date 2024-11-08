@@ -18,7 +18,7 @@ class Snake {
         ];
         this.xdir = 0;
         this.ydir = 0;
-        this.points = 0;
+        this.score = 0;
 
         this.boostActive = false;
         this.boostDuration = 15000;
@@ -85,7 +85,7 @@ class Snake {
         for (let i = 0; i < len; i++) {
             this.body.push(this.body[this.body.length - 1].copy());
         }
-        this.points++
+        this.score += 10;
     }
 
     eat(food) {
@@ -99,7 +99,7 @@ class Snake {
 
     show() {
         noStroke();
-        fill(0);
+        fill(168, 255, 0);
         for (let segment of this.body) {
             rect(segment.x, segment.y, 1, 1);
         }

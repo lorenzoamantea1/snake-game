@@ -98,7 +98,7 @@ class Enemy {
     }
 
     show() {
-        fill(255, 105, 105);
+        fill(209, 0, 255);
         noStroke();
         for (let segment of this.body) {
             rect(segment.x, segment.y, 1, 1);

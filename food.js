@@ -10,11 +10,11 @@ class Food {
         if (this.type === 1) {
             fill(255, 0, 0);
         } else if (this.type === 2) {
-            fill(0, 255, 0);
-        } else if (this.type === 3) {
             fill(0, 0, 255);
+        } else if (this.type === 3) {
+            fill(255, 165, 0);
         } else if (this.type === 4) {
-            fill(160, 32, 240);
+            fill(255, 0, 127);
         }
         rect(this.position.x, this.position.y, 1, 1);
     }
