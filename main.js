@@ -1,3 +1,13 @@
+window.onload = function () {
+    setTimeout(function () {
+        document.getElementById("loading-screen").style.display = "none";
+        document.getElementById("score-display").style.display = "block";  
+        document.getElementById("best-score-display").style.display = "block";  
+    }, 3000); 
+};
+
+
+
 let resolution = 20;
 let speed = 5;
 
