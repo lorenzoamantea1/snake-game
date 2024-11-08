@@ -22,13 +22,14 @@ function setup() {
     snake = new Snake();
     food = new Food();
     enemy = new Enemy();
+    loadBestScore();
+    updateScoreDisplay();
 }
 
 function draw() {
     snake.checkBoostStatus();
 
     loadBestScore();
-    updateScoreDisplay();
 
     let currentSpeed = speed + (snake.score / 20) + (snake.boostActive ? speed * 2 : speed);
     frameRate(currentSpeed);
@@ -44,8 +45,10 @@ function draw() {
 
     if (snake.eat(food) || enemy.eat(food)) {
         food = new Food();
+        updateScoreDisplay();
     }
     if (enemy.checkCollision(snake)) {
+        updateScoreDisplay();
         if (snake.body.length > enemy.body.length) {
             snake.grow(enemy.body.length);
             console.log("[Main]: Enemy killed -", enemy.body.length);
@@ -67,7 +70,12 @@ function updateScoreDisplay() {
     document.getElementById('score').innerText = snake.score;
     document.getElementById('best-score').innerText = bestScore;
     if (snake.score > bestScore) {
+        document.getElementById("score-display").style.animation = "blink 0.1s infinite alternate";  
+        document.getElementById("best-score-display").style.animation = "blink 0.1s infinite alternate";  
         saveBestScore();
+    } else {
+        document.getElementById("score-display").style.animation = "none";  
+        document.getElementById("best-score-display").style.animation = "none";  
     }
 }
 

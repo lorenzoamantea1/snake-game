@@ -5,21 +5,22 @@ body {
     justify-content: center;
     align-items: center;
     filter: contrast(110%) brightness(90%) saturate(120%) grayscale(20%);
-    background-color: #000000; 
-    font-family: 'Press Start 2P', cursive; 
-    color: #00FF00; 
+    background-color: #000000;
+    font-family: 'Press Start 2P', cursive;
+    color: #00FF00;
     text-align: center;
 }
 
-#score-display, #best-score-display {
+#score-display,
+#best-score-display {
     display: none;
     font-family: 'Press Start 2P', cursive;
     background: rgba(0, 0, 0, 0.6);
     color: #00FF00;
     padding: 10px 20px;
-    border: 3px solid #00FF00; 
+    border: 3px solid #00FF00;
     border-radius: 10px;
-    box-shadow: 0 0 10px 2px #00FF00; 
+    box-shadow: 0 0 10px 2px #00FF00;
     position: absolute;
 }
 
@@ -34,61 +35,6 @@ body {
 }
 
 canvas {
-    border: 5px solid rgb(0, 255, 0); 
-    box-shadow: 0 0 15px 5px rgba(0, 255, 0, 0.75); 
-}
-
-#loading-screen {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgb(18, 18, 18); /* Dark background */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    font-family: 'Press Start 2P', cursive;
-}
-
-.loading-text {
-    font-size: 3em;
-    color: rgb(0, 255, 255); /* Neon Cyan */
-    text-align: center;
-    text-shadow: 0 0 5px rgb(0, 255, 255), 0 0 15px rgb(0, 255, 255), 0 0 30px rgb(0, 255, 255);
-    animation: blink 1.5s infinite alternate;
-}
-
-@keyframes blink {
-    0% { opacity: 1; }
-    100% { opacity: 0.3; }
-}
-
-.loading-bar {
-    margin-top: 20px;
-    width: 80%;
-    height: 20px;
-    background-color: #222;
-    border-radius: 10px;
-    border: 3px solid rgb(0, 255, 255); 
-    position: relative;
-    overflow: hidden;
-}
-
-.loading-bar::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 0%;
-    height: 100%;
-    background-color: rgb(0, 255, 255); 
-    animation: loading 4s ease-in-out infinite;
-}
-
-@keyframes loading {
-    0% { width: 0%; }
-    50% { width: 50%; }
-    100% { width: 100%; }
+    border: 5px solid rgb(0, 255, 0);
+    box-shadow: 0 0 15px 5px rgba(0, 255, 0, 0.75);
 }
