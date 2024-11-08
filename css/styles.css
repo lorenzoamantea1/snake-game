@@ -11,6 +11,7 @@ body {
     text-align: center;
 }
 
+/* Score Displays & Canvas styles */
 #score-display,
 #best-score-display {
     display: none;
@@ -19,7 +20,7 @@ body {
     color: #00FF00;
     padding: 10px 20px;
     border: 3px solid #00FF00;
-    border-radius: 10px;
+    border-radius: 5px;
     box-shadow: 0 0 10px 2px #00FF00;
     position: absolute;
 }
@@ -37,4 +38,35 @@ body {
 canvas {
     border: 5px solid rgb(0, 255, 0);
     box-shadow: 0 0 15px 5px rgba(0, 255, 0, 0.75);
+}
+
+/* Game Over styles */
+#game-over {
+    display: none;
+    text-align: center;
+    font-family: 'Press Start 2P', cursive;
+    color: red;
+}
+
+#game-over h1 {
+    font-size: 3em;
+    animation: blink 1s infinite alternate;
+}
+
+#game-over p {
+    font-size: 1.5em;
+    color: yellow;
+}
+
+#game-over button {
+    font-family: 'Press Start 2P', cursive;
+    padding: 10px 20px;
+    background-color: #00FF00;
+    color: black;
+    border: 2px solid #00FF00;
+    cursor: pointer;
+}
+
+#game-over button:hover {
+    background-color: #00CC00;
 }

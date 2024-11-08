@@ -1,4 +1,4 @@
-
+/* Loading Screen styles */
 #loading-screen {
     position: absolute;
     top: 0;
@@ -43,6 +43,7 @@
     animation: loading 4s ease-in-out infinite;
 }
 
+/* Loading Screen animations */
 @keyframes blink {
     0% {
         opacity: 1;
