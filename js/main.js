@@ -1,17 +1,24 @@
 let resolution = 20;
 let speed = 5;
-
 let bestScore = 0;
 
 let snake;
 let enemy;
 let food;
+let obstacle; 
+
+let gridWidth = 35; 
+let gridHeight = 35; 
+let numObstacles = 15;
 
 function setup() {
     createCanvas(700, 700);
-    snake = new Snake();
-    food = new Food();
-    enemy = new Enemy();
+    resolution = floor(width / gridWidth); 
+
+    snake = new Snake(gridWidth, gridHeight);
+    obstacle = new Obstacle(gridWidth, gridHeight, numObstacles); 
+    food = new Food(obstacle.positions);
+    enemy = new Enemy(gridWidth, gridHeight);
     loadBestScore();
     updateScoreDisplay();
 }
@@ -27,17 +34,16 @@ function draw() {
     scale(resolution);
     background(18, 18, 18);
 
-    const target = food.position
     if (snake.update()) {
         showGameOver();
     }
 
     if (!snake.xdir == 0 || !snake.ydir == 0) {
-        enemy.update(target);
+        enemy.update(food.position, obstacle.positions);
     }
 
     if (snake.eat(food) || enemy.eat(food)) {
-        food = new Food();
+        food.respawn();
         updateScoreDisplay();
     }
     if (enemy.checkCollision(snake)) {
@@ -53,10 +59,16 @@ function draw() {
             showGameOver();
         }
     }
-
+    if (obstacle.checkCollision(snake)) {
+        showGameOver();
+    }
+    if (obstacle.checkCollision(enemy)) {
+        enemy.reset()
+    }
     snake.show();
     food.show();
     enemy.show();
+    obstacle.show();
 }
 
 function keyPressed() {

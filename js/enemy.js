@@ -12,10 +12,9 @@ class Enemy {
         this.growthCounter = 3;
     }
 
-    update(target) {
+    update(target, obstacles) {
         const head = this.body[0].copy();
-        this.moveTowardsTarget(target);
-
+        this.moveTowardsTarget(target, obstacles);
         head.x += this.xdir;
         head.y += this.ydir;
 
@@ -42,46 +41,62 @@ class Enemy {
         }
         return false;
     }
-
-    moveTowardsTarget(target) {
+    
+    moveTowardsTarget(target, obstacles) {
         const head = this.body[0];
-
         const dx = target.x - head.x;
         const dy = target.y - head.y;
+        let newXDir = this.xdir;
+        let newYDir = this.ydir;
 
         if (abs(dx) > abs(dy)) {
-            this.xdir = dx > 0 ? 1 : -1;
-            this.ydir = 0;
+            newXDir = dx > 0 ? 1 : -1;
+            newYDir = 0;
         } else {
-            this.ydir = dy > 0 ? 1 : -1;
-            this.xdir = 0;
+            newYDir = dy > 0 ? 1 : -1;
+            newXDir = 0;
         }
 
-        if (this.body.length > 1) {
-            const neck = this.body[1];
-            if (head.x + this.xdir === neck.x && head.y + this.ydir === neck.y) {
-                if (abs(dx) > abs(dy)) {
-                    this.xdir = 0;
-                    this.ydir = dy > 0 ? 1 : -1;
-                } else {
-                    this.ydir = 0;
-                    this.xdir = dx > 0 ? 1 : -1;
-                }
+        const newPosX = head.x + newXDir;
+        const newPosY = head.y + newYDir;
+
+        if (this.isObstacle(newPosX, newPosY, obstacles) || this.isSelfCollision(newPosX, newPosY)) {
+            if (newXDir !== 0) {
+                newXDir = 0;
+                newYDir = dy > 0 ? 1 : -1;
+            } else {
+                newYDir = 0;
+                newXDir = dx > 0 ? 1 : -1;
             }
         }
+
+        this.xdir = newXDir;
+        this.ydir = newYDir;
+    }
+
+    isObstacle(x, y, obstacles) {
+        for (let obstacle of obstacles) {
+            if (obstacle.x === x && obstacle.y === y) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    isSelfCollision(x, y) {
+        for (let i = 1; i < this.body.length; i++) {
+            if (this.body[i].x === x && this.body[i].y === y) {
+                return true;
+            }
+        }
+        return false;
     }
 
     isGameOver(head) {
         if (head.x < 0 || head.x >= this.gridWidth || head.y < 0 || head.y >= this.gridHeight) {
             return true;
         }
-
-        for (let i = 1; i < this.body.length; i++) {
-            if (head.x === this.body[i].x && head.y === this.body[i].y) {
-                return true;
-            }
-        }
-        return false;
+        return this.isSelfCollision(head.x, head.y);
     }
 
     grow(len = 1) {
