@@ -1,3 +1,4 @@
 # snake-game
 
-gioco che utilizza la libreria p5.js per realizzare il classico snake-game
+## Play it on your browser
+https://lorenzoamantea1.github.io/snake-game/
