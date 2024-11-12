@@ -2,7 +2,19 @@ class Enemy {
     constructor(gridWidth = 35, gridHeight = 35) {
         this.gridWidth = gridWidth;
         this.gridHeight = gridHeight;
+        this.visible = false; // Track whether the Enemy is active and visible
         this.reset();
+    }
+
+    spawn() {
+        this.visible = true;
+        this.reset(); // Reset position and other properties when spawning
+        console.log("[Enemy]: Spawned");
+    }
+
+    despawn() {
+        this.visible = false;
+        console.log("[Enemy]: Despawned");
     }
 
     reset() {
@@ -13,6 +25,8 @@ class Enemy {
     }
 
     update(target, obstacles) {
+        if (!this.visible) return; // Skip updating if the enemy is not visible
+
         const head = this.body[0].copy();
         this.moveTowardsTarget(target, obstacles);
         head.x += this.xdir;
@@ -34,6 +48,8 @@ class Enemy {
     }
 
     eat(food) {
+        if (!this.visible) return false; // Skip eating if the enemy is not visible
+
         if (this.body[0].x === food.position.x && this.body[0].y === food.position.y) {
             this.grow(food.type);
             console.log("[Enemy]: eat -", food.type);
@@ -41,8 +57,10 @@ class Enemy {
         }
         return false;
     }
-    
+
     moveTowardsTarget(target, obstacles) {
+        if (!this.visible) return; // Skip movement if the enemy is not visible
+
         const head = this.body[0];
         const dx = target.x - head.x;
         const dy = target.y - head.y;
@@ -75,6 +93,8 @@ class Enemy {
     }
 
     isObstacle(x, y, obstacles) {
+        if (!this.visible) return false;
+
         for (let obstacle of obstacles) {
             if (obstacle.x === x && obstacle.y === y) {
                 return true;
@@ -84,6 +104,8 @@ class Enemy {
     }
 
     isSelfCollision(x, y) {
+        if (!this.visible) return false;
+
         for (let i = 1; i < this.body.length; i++) {
             if (this.body[i].x === x && this.body[i].y === y) {
                 return true;
@@ -93,6 +115,8 @@ class Enemy {
     }
 
     isGameOver(head) {
+        if (!this.visible) return false;
+
         if (head.x < 0 || head.x >= this.gridWidth || head.y < 0 || head.y >= this.gridHeight) {
             return true;
         }
@@ -100,10 +124,14 @@ class Enemy {
     }
 
     grow(len = 1) {
-        this.growthCounter += len / 2;
+        if (this.visible) {
+            this.growthCounter += len / 2;
+        }
     }
 
     checkCollision(snake) {
+        if (!this.visible) return false;
+
         for (let segment of this.body) {
             if (segment.x === snake.body[0].x && segment.y === snake.body[0].y) {
                 return true;
@@ -113,6 +141,8 @@ class Enemy {
     }
 
     show() {
+        if (!this.visible) return;
+
         fill(209, 0, 255);
         noStroke();
         for (let segment of this.body) {

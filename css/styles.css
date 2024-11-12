@@ -16,13 +16,17 @@ body {
 #best-score-display {
     display: none;
     font-family: 'Press Start 2P', cursive;
-    background: rgba(0, 0, 0, 0.6);
+    font-size: 1.2em;
+    background: rgba(0, 0, 0, 0.8);
     color: #00FF00;
     padding: 10px 20px;
+    font-size: 14px;
     border: 3px solid #00FF00;
     border-radius: 5px;
-    box-shadow: 0 0 10px 2px #00FF00;
+    box-shadow: 0 0 10px 2px #00FF00, 0 0 15px 5px rgba(0, 255, 0, 0.5);
     position: absolute;
+    overflow: hidden;
+    animation: menu-slide-in 0.5s ease-in-out;
 }
 
 #score-display {
@@ -46,11 +50,12 @@ canvas {
     text-align: center;
     font-family: 'Press Start 2P', cursive;
     color: red;
+    text-shadow: 0 0 10px red, 0 0 20px red;
 }
 
 #game-over h1 {
     font-size: 3em;
-    animation: blink 1s infinite alternate;
+    animation: blink 1s infinite alternate, flicker 0.1s infinite alternate;
 }
 
 #game-over p {
@@ -65,6 +70,7 @@ canvas {
     color: black;
     border: 2px solid #00FF00;
     cursor: pointer;
+    box-shadow: 0 0 10px #00FF00;
 }
 
 #game-over button:hover {

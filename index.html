@@ -19,30 +19,27 @@
         <div class="loading-text">Loading...</div>
         <div class="loading-bar"></div>
     </div>
+
     <div id="game-over" style="display: none;">
         <h1>GAME OVER</h1>
         <p>Final Score: <span id="final-score">0</span></p>
         <button onclick="restartGame()">Restart</button>
     </div>
+
     <div>
         <div id="score-display">Score: <span id="score">0</span></div>
         <div id="best-score-display">Best Score: <span id="best-score">0</span></div>
     </div>
 
-    <div class="menu-container">
+    <div class="menu-container" id="options-container">
         <div class="switch-container">
-          <label for="switch1">Obstacles</label>
-          <input type="checkbox" id="switch1">
+          <label for="ObstacleSwitch">Obstacles</label>
+          <input type="checkbox" id="ObstacleSwitch" checked>
         </div>
     
         <div class="switch-container">
-          <label for="switch2">Enemy</label>
-          <input type="checkbox" id="switch2">
-        </div>
-    
-        <div class="switch-container">
-          <label for="switch3">Boost</label>
-          <input type="checkbox" id="switch3">
+          <label for="EnemySwitch">Enemy</label>
+          <input type="checkbox" id="EnemySwitch" checked>
         </div>
     </div>
 

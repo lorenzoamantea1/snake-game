@@ -2,7 +2,8 @@ window.onload = function () {
     setTimeout(function () {
         document.getElementById("loading-screen").style.display = "none";
         document.getElementById("score-display").style.display = "block";
-        document.getElementById("best-score-display").style.display = "block";
+        document.getElementById("best-score-display").style.display = "flex";
+        document.getElementById("options-container").style.display = "flex";
     }, 3000);
 };
 

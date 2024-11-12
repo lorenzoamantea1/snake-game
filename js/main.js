@@ -13,13 +13,17 @@ let numObstacles = 15;
 
 function setup() {
     createCanvas(700, 700);
-    resolution = floor(width / gridWidth); 
+    resolution = floor(width / gridWidth);
 
-    obstacle = new Obstacle(gridWidth, gridHeight, numObstacles); 
-
-    document.getElementById('switch1').addEventListener('change', (e) => {
-        console.log('Obstacles');
+    obstacle = new Obstacle(gridWidth, gridHeight, numObstacles);
+    const obstaclesCheckbox = document.getElementById('ObstacleSwitch');
+    obstaclesSwitch = obstaclesCheckbox.checked;
+    if (obstaclesSwitch) {
+        obstacle.addObstacles(15);
+    }
+    obstaclesCheckbox.addEventListener('change', (e) => {
         obstaclesSwitch = e.target.checked;
+        console.log(obstaclesSwitch);
         if (obstaclesSwitch) {
             obstacle.addObstacles(15);
         } else {
@@ -27,9 +31,24 @@ function setup() {
         }
     });
 
+    enemy = new Enemy(gridWidth, gridHeight);
+    const enemyCheckbox = document.getElementById('EnemySwitch');
+    EnemySwitch = enemyCheckbox.checked;
+    if (EnemySwitch) {
+        enemy.spawn();
+    }
+    enemyCheckbox.addEventListener('change', (e) => {
+        EnemySwitch = e.target.checked;
+        if (EnemySwitch) {
+            enemy.spawn();
+        } else {
+            enemy.despawn();
+        }
+    });
+
     snake = new Snake(gridWidth, gridHeight);
     food = new Food(obstacle.positions);
-    enemy = new Enemy(gridWidth, gridHeight);
+
     loadBestScore();
     updateScoreDisplay();
 }
