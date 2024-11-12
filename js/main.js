@@ -18,6 +18,7 @@ function setup() {
     obstacle = new Obstacle(gridWidth, gridHeight, numObstacles); 
 
     document.getElementById('switch1').addEventListener('change', (e) => {
+        console.log('Obstacles');
         obstaclesSwitch = e.target.checked;
         if (obstaclesSwitch) {
             obstacle.addObstacles(15);
