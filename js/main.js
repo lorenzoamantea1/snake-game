@@ -9,14 +9,24 @@ let obstacle;
 
 let gridWidth = 35; 
 let gridHeight = 35; 
-let numObstacles = 15;
+let numObstacles = 15; 
 
 function setup() {
     createCanvas(700, 700);
     resolution = floor(width / gridWidth); 
 
-    snake = new Snake(gridWidth, gridHeight);
     obstacle = new Obstacle(gridWidth, gridHeight, numObstacles); 
+
+    document.getElementById('switch1').addEventListener('change', (e) => {
+        obstaclesSwitch = e.target.checked;
+        if (obstaclesSwitch) {
+            obstacle.addObstacles(15);
+        } else {
+            obstacle.clearObstacles();
+        }
+    });
+
+    snake = new Snake(gridWidth, gridHeight);
     food = new Food(obstacle.positions);
     enemy = new Enemy(gridWidth, gridHeight);
     loadBestScore();

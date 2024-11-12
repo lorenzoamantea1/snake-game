@@ -1,0 +1,28 @@
+.menu-container {
+    display: flex;
+    width: 250px;
+    padding: 10px;
+    border: 3px solid #00FF00;
+    border-radius: 5px;
+    box-shadow: 0 0 10px 2px #00FF00;
+    color: #00FF00;
+    background-color: #000000;
+    position: absolute;
+    flex-direction: column;
+    top: 200px;
+    left: 20px;
+    gap: 15px;
+  }
+
+
+.switch-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.switch-container input[type="checkbox"] {
+    width: 40px;
+    height: 20px;
+}

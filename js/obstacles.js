@@ -4,11 +4,25 @@ class Obstacle {
         this.gridHeight = gridHeight;
         this.positions = [];
         this.obstaclesCount = 0; 
-        while (this.obstaclesCount < numObstacles) {
+
+    }
+
+    addObstacles(count) {
+        for (let i = 0; i < count; i++) {
             this.addObstacle();
         }
     }
 
+    removeObstacle() {
+        if (this.positions.length > 0) {
+            const index = floor(random(this.positions.length));
+            this.positions.splice(index, 1);
+        }
+    }
+
+    clearObstacles() {
+        this.positions = [];
+    }
     addObstacle() {
         let attempts = 0;
         const maxAttempts = 10;
