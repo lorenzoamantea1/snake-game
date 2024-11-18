@@ -9,6 +9,7 @@ body {
     font-family: 'Press Start 2P', cursive;
     color: #00FF00;
     text-align: center;
+    animation: flicker 0.3s infinite alternate;
 }
 
 /* Score Displays & Canvas styles */
@@ -50,7 +51,7 @@ canvas {
     text-align: center;
     font-family: 'Press Start 2P', cursive;
     color: red;
-    text-shadow: 0 0 10px red, 0 0 20px red;
+    text-shadow: 0 0 1px red, 0 0 5px red;
 }
 
 #game-over h1 {
