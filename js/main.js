@@ -7,43 +7,53 @@ let enemy;
 let food;
 let obstacle; 
 
-let gridWidth = 35; 
-let gridHeight = 35; 
-let numObstacles = 15; 
+let gridWidth = 40; 
+let gridHeight = 40; 
+let numObstacles = 20; 
 
 function setup() {
-    createCanvas(700, 700);
+    createCanvas(gridWidth*resolution, gridHeight*resolution);
     resolution = floor(width / gridWidth);
 
     obstacle = new Obstacle(gridWidth, gridHeight, numObstacles);
+    enemy = new Enemy(gridWidth, gridHeight);
     const obstaclesCheckbox = document.getElementById('ObstacleSwitch');
-    obstaclesSwitch = obstaclesCheckbox.checked;
+    const enemyCheckbox = document.getElementById('EnemySwitch');
+    
+    let obstaclesSwitch = JSON.parse(localStorage.getItem('obstaclesEnabled'));
+    if (obstaclesSwitch === null) {
+        obstaclesSwitch = obstaclesCheckbox.checked;
+    } else {
+        obstaclesCheckbox.checked = obstaclesSwitch;
+    }
+    
     if (obstaclesSwitch) {
         obstacle.addObstacles(15);
+    } else {
+        obstacle.clearObstacles();
     }
+    
     obstaclesCheckbox.addEventListener('change', (e) => {
         obstaclesSwitch = e.target.checked;
-        console.log(obstaclesSwitch);
-        if (obstaclesSwitch) {
-            obstacle.addObstacles(15);
-        } else {
-            obstacle.clearObstacles();
-        }
+        localStorage.setItem('obstaclesEnabled', JSON.stringify(obstaclesSwitch));
     });
-
-    enemy = new Enemy(gridWidth, gridHeight);
-    const enemyCheckbox = document.getElementById('EnemySwitch');
-    EnemySwitch = enemyCheckbox.checked;
-    if (EnemySwitch) {
-        enemy.spawn();
+    
+    let enemySwitch = JSON.parse(localStorage.getItem('enemyEnabled'));
+    if (enemySwitch === null) {
+        enemySwitch = enemyCheckbox.checked;
+    } else {
+        enemyCheckbox.checked = enemySwitch;
     }
+    
+    if (enemySwitch) {
+        enemy.spawn();
+    } else {
+        enemy.despawn();
+    }
+    
     enemyCheckbox.addEventListener('change', (e) => {
-        EnemySwitch = e.target.checked;
-        if (EnemySwitch) {
-            enemy.spawn();
-        } else {
-            enemy.despawn();
-        }
+        enemySwitch = e.target.checked;
+        localStorage.setItem('enemyEnabled', JSON.stringify(enemySwitch));
     });
 
     snake = new Snake(gridWidth, gridHeight);

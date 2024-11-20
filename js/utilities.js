@@ -39,6 +39,13 @@ function saveBestScore() {
     localStorage.setItem('bestScore', snake.score);
 }
 
+function saveLocalStore(name, value) {
+    localStorage.setItem(name, value);
+}
+function loadLocalStore(name) {
+    return localStorage.getItem(name);
+}
+
 function loadBestScore() {
     const savedBestScore = localStorage.getItem('bestScore');
     if (savedBestScore) {
