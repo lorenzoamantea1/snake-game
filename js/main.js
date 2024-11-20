@@ -12,6 +12,7 @@ let gridHeight = 40;
 let numObstacles = 20; 
 
 function setup() {
+    
     createCanvas(gridWidth*resolution, gridHeight*resolution);
     resolution = floor(width / gridWidth);
 
