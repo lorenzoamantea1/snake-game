@@ -19,16 +19,31 @@ Welcome to the **Snake Game** built with **HTML**, **CSS**, and **JavaScript**! 
 
 1. **Clone or Download the Repository:**
 
-   Clone the repository or download the files to your computer and open the index.html file:
+   Clone the repository or download the files to your computer:
 
    ```bash
    git clone https://github.com/lorenzoamantea1/snake-game.git
-   cd snake-game
-   open index.html
+   ```
+2. **Open the Game in Your Browser:**
+
+    Navigate to the project folder and open index.html in any modern web browser.
+
+   ```bash
+    cd snake-game
+    open index.html
    ```
 
 ## 🌍 Play Online
 You can also play the game directly in your browser by visiting [this link](https://lorenzoamantea1.github.io/snake-game/)
+
+---
+
+## 🖥️ Technologies Used
+
+- **p5.js**: A powerful library used for drawing the game canvas, handling the game loop, and managing user input in an interactive environment.
+- **HTML**: Provides the basic structure and layout of the game.
+- **CSS**: Styles the game to give it a clean, minimal design.
+- **JavaScript**: Implements game logic, movement, collision detection, and speed mechanics.
 
 ---
 
