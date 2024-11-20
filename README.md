@@ -11,3 +11,9 @@ Welcome to the **Snake Game** built with **HTML** and **JavaScript**! 🎮 Revis
 - **Score Tracker:** See your score in real-time as you play.
 
 ---
+
+## 🌍 Play Online
+You can also play the game directly in your browser by visiting [this link](https://lorenzoamantea1.github.io/snake-game/)
+
+---
+
