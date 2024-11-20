@@ -19,7 +19,7 @@ Welcome to the **Snake Game** built with **HTML**, **CSS**, and **JavaScript**! 
 
 1. **Clone or Download the Repository:**
 
-   Clone the repository or download the files to your computer:
+   Clone the repository or download the files to your computer and open the index.html file:
 
    ```bash
    git clone https://github.com/lorenzoamantea1/snake-game.git
