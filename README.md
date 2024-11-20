@@ -38,7 +38,7 @@ You can also play the game directly in your browser by visiting [this link](http
 
 ---
 
-## 🖥️ Technologies Used
+## 🖥️ How It Works
 
 - **p5.js**: A powerful library used for drawing the game canvas, handling the game loop, and managing user input in an interactive environment.
 - **HTML**: Provides the basic structure and layout of the game.
