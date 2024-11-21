@@ -7,8 +7,8 @@ let enemy;
 let food;
 let obstacle; 
 
-let gridWidth = 45; 
-let gridHeight = 45; 
+let gridWidth = 55; 
+let gridHeight = 55; 
 let numObstacles = 20; 
 
 function setup() {
