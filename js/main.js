@@ -7,12 +7,12 @@ let enemy;
 let food;
 let obstacle; 
 
-let gridWidth = 40; 
-let gridHeight = 40; 
+let gridWidth = 45; 
+let gridHeight = 45; 
 let numObstacles = 20; 
 
 function setup() {
-    createCanvas(gridWidth*resolution, gridHeight*resolution);
+    createCanvas(800,800/*gridWidth*resolution, gridHeight*resolution*/);
     resolution = floor(width / gridWidth);
 
     obstacle = new Obstacle(gridWidth, gridHeight, numObstacles);
