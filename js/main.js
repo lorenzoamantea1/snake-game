@@ -1,4 +1,3 @@
-let resolution = 20;
 let speed = 5;
 let bestScore = 0;
 
@@ -6,14 +5,17 @@ let snake;
 let enemy;
 let food;
 let obstacle; 
+let resolution;
 
 let gridWidth = 45; 
 let gridHeight = 45; 
 let numObstacles = 20; 
 
 function setup() {
-    createCanvas(800,800/*gridWidth*resolution, gridHeight*resolution*/);
-    resolution = floor(width / gridWidth);
+    canvasSize = min(windowWidth, windowHeight) * 0.9;
+    resolution = floor(canvasSize / max(gridWidth, gridHeight));
+
+    createCanvas(gridWidth * resolution, gridHeight * resolution);
 
     obstacle = new Obstacle(gridWidth, gridHeight, numObstacles);
     enemy = new Enemy(gridWidth, gridHeight);

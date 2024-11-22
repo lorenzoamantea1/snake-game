@@ -1,5 +1,5 @@
 class Snake {
-    constructor(gridWidth = 35, gridHeight = 35) {
+    constructor(gridWidth = 45, gridHeight = 45) {
         this.gridWidth = gridWidth;
         this.gridHeight = gridHeight;
 
@@ -62,13 +62,13 @@ class Snake {
         if (head.x < 0 || head.x >= this.gridWidth || head.y < 0 || head.y >= this.gridHeight) {
             return true;
         }
-
+    
         for (let i = 1; i < this.body.length; i++) {
             if (head.x === this.body[i].x && head.y === this.body[i].y) {
                 return true;
             }
         }
-
+    
         return false;
     }
 
