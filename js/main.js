@@ -7,8 +7,8 @@ let food;
 let obstacle; 
 let resolution;
 
-let gridWidth = 45; 
-let gridHeight = 45; 
+let gridWidth = 50; 
+let gridHeight = 50; 
 let numObstacles = 20; 
 
 function setup() {
@@ -126,34 +126,3 @@ function keyPressed() {
         snake.activateBoost();
     }
 }
-
-const upButton = document.querySelector('.up');
-const downButton = document.querySelector('.down');
-const leftButton = document.querySelector('.left');
-const rightButton = document.querySelector('.right');
-const boostButton = document.querySelector('.boost');
-
-upButton.addEventListener('touchstart', () => {
-  snake.setDir(0, -1);  // Move up
-});
-
-downButton.addEventListener('touchstart', () => {
-  snake.setDir(0, 1);  // Move down
-});
-
-leftButton.addEventListener('touchstart', () => {
-  snake.setDir(-1, 0);  // Move left
-});
-
-rightButton.addEventListener('touchstart', () => {
-  snake.setDir(1, 0);  // Move right
-});
-
-boostButton.addEventListener('touchstart', () => {
-  snake.activateBoost();  // Activate boost
-});
-
-// Optional: To prevent the default browser behavior (like zooming)
-document.body.addEventListener('touchmove', function(event) {
-  event.preventDefault();
-})
