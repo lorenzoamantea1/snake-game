@@ -1,19 +1,30 @@
+/* Menu container styling */
 .menu-container {
     display: none;
     width: 250px;
     max-width: 90%;
     padding: 15px;
-    border: 3px solid #00FF00;
+    border: 3px solid #ff00c8;
     border-radius: 5px;
-    box-shadow: 0 0 15px 5px #00FF00, 0 0 30px 10px rgba(0, 255, 0, 0.5);
-    color: #00FF00;
-    background-color: #000000;
+    box-shadow: 0 0 15px 5px #ff00c8, 0 0 30px 10px rgba(255, 0, 200, 0.5);
+    color: #ff00c8; 
+    background-color: rgb(26, 26, 46); 
     position: absolute;
     flex-direction: column;
     top: 200px;
     left: 20px;
     font-size: 14px;
     animation: menu-slide-in 0.5s ease-in-out;
+    z-index: 10; 
+}
+
+@keyframes menu-slide-in {
+    0% {
+        transform: translateX(-100%); 
+    }
+    100% {
+        transform: translateX(0); 
+    }
 }
 
 .switch-container {
@@ -21,19 +32,24 @@
     justify-content: space-between;
     align-items: center;
     padding: 8px 0;
+    background-color: #1a1a2e;
+    border-bottom: 2px solid #ff00c8; 
+    margin-bottom: 10px;
 }
 
 .switch-container label {
-    color: #00FF00;
+    color: #ff00c8;
     font-size: 14px;
-
+    font-weight: bold;
+    text-shadow: 0 0 3px #ff00c8, 0 0 6px rgba(255, 0, 200, 0.5);
 }
 
 .switch-container input[type="checkbox"] {
     width: 45px;
     height: 22px;
-    accent-color: #00FF00;
+    accent-color: #ff00c8; 
     cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
     outline: none;
 }
+

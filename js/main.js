@@ -74,7 +74,7 @@ function draw() {
     frameRate(currentSpeed);
 
     scale(resolution);
-    background(18, 18, 18);
+    background(26, 26, 46);
 
     if (snake.update()) {
         showGameOver();
