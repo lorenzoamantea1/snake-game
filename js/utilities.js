@@ -4,6 +4,7 @@ window.onload = function () {
         document.getElementById("score-display").style.display = "block";
         document.getElementById("best-score-display").style.display = "flex";
         document.getElementById("options-container").style.display = "flex";
+        document.getElementById("instructions-container").style.display = "block";
     }, 3000);
 };
 

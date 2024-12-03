@@ -25,6 +25,7 @@
         <p>Final Score: <span id="final-score">0</span></p>
         <button onclick="restartGame()">Restart</button>
     </div>
+    
 
     <div>
         <div id="score-display">Score: <span id="score">0</span></div>
@@ -35,15 +36,30 @@
         <div class="switch-container">
           <label for="ObstacleSwitch">Obstacles</label>
           <input type="checkbox" id="ObstacleSwitch" checked>
+          <label for="ObstacleSwitch" class="lbl"></label>
         </div>
     
         <div class="switch-container">
           <label for="EnemySwitch">Enemy</label>
           <input type="checkbox" id="EnemySwitch" checked>
+          <label for="EnemySwitch" class="lbl"></label>
         </div>
 
         <p>NOTE: The changes will take effect after a reload.</p>
     </div>
+
+    <div id="instructions-container">
+        <h2>How to Play</h2>
+        <ul>
+            <li><strong>Controls:</strong> Control the snake’s direction with WASD.</li>
+            <li><strong>Eat food:</strong> Grow the snake and score points.</li>
+            <li><strong>Avoid obstacles:</strong> Don’t crash into obstacles or the walls.</li>
+            <li><strong>Enemy Snake:</strong> Avoid the enemy snake as it competes for food, you can kill him, but only if you are longer</li>
+            <li><strong>Speed Boost:</strong> Press the B key for a temporary speed boost, <strong>Attention!</strong> the speed boost effect the enemy too.</li>
+            <li><strong>Game Over:</strong> The game ends when you hit an obstacle or the enemy snake.</li>
+        </ul>
+    </div>
+
     <script src="js/utilities.js"></script>
 
     <script src="js/obstacles.js" type="text/JavaScript" defer></script>

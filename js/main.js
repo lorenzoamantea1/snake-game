@@ -70,7 +70,7 @@ function draw() {
 
     loadBestScore();
 
-    let currentSpeed = speed + (snake.score / 20) + (snake.boostActive ? speed * 2 : speed);
+    let currentSpeed = speed + (snake.score / 100) + (snake.boostActive ? speed * 2 : speed);
     frameRate(currentSpeed);
 
     scale(resolution);
