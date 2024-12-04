@@ -10,7 +10,7 @@
     background-color: #000000;
     position: absolute;
     flex-direction: column;
-    top: 200px;
+    top: 150px;
     left: 20px;
     font-size: 14px;
     animation: menu-slide-in 0.5s ease-in-out;

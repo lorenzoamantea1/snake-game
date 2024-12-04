@@ -4,12 +4,12 @@ let bestScore = 0;
 let snake;
 let enemy;
 let food;
-let obstacle; 
+let obstacle;
 let resolution;
 
-let gridWidth = 45; 
-let gridHeight = 45; 
-let numObstacles = 20; 
+let gridWidth = 45;
+let gridHeight = 45;
+let numObstacles = 20;
 
 function setup() {
     canvasSize = min(windowWidth, windowHeight) * 0.9;
@@ -21,38 +21,38 @@ function setup() {
     enemy = new Enemy(gridWidth, gridHeight);
     const obstaclesCheckbox = document.getElementById('ObstacleSwitch');
     const enemyCheckbox = document.getElementById('EnemySwitch');
-    
+
     let obstaclesSwitch = JSON.parse(localStorage.getItem('obstaclesEnabled'));
     if (obstaclesSwitch === null) {
         obstaclesSwitch = obstaclesCheckbox.checked;
     } else {
         obstaclesCheckbox.checked = obstaclesSwitch;
     }
-    
+
     if (obstaclesSwitch) {
         obstacle.addObstacles(15);
     } else {
         obstacle.clearObstacles();
     }
-    
+
     obstaclesCheckbox.addEventListener('change', (e) => {
         obstaclesSwitch = e.target.checked;
         localStorage.setItem('obstaclesEnabled', JSON.stringify(obstaclesSwitch));
     });
-    
+
     let enemySwitch = JSON.parse(localStorage.getItem('enemyEnabled'));
     if (enemySwitch === null) {
         enemySwitch = enemyCheckbox.checked;
     } else {
         enemyCheckbox.checked = enemySwitch;
     }
-    
+
     if (enemySwitch) {
         enemy.spawn();
     } else {
         enemy.despawn();
     }
-    
+
     enemyCheckbox.addEventListener('change', (e) => {
         enemySwitch = e.target.checked;
         localStorage.setItem('enemyEnabled', JSON.stringify(enemySwitch));

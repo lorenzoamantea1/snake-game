@@ -2,13 +2,13 @@ class Enemy {
     constructor(gridWidth = 35, gridHeight = 35) {
         this.gridWidth = gridWidth;
         this.gridHeight = gridHeight;
-        this.visible = false; // Track whether the Enemy is active and visible
+        this.visible = false;
         this.reset();
     }
 
     spawn() {
         this.visible = true;
-        this.reset(); // Reset position and other properties when spawning
+        this.reset();
         console.log("[Enemy]: Spawned");
     }
 

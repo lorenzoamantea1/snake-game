@@ -53,3 +53,12 @@ function loadBestScore() {
         bestScore = parseInt(savedBestScore, 10);
     }
 }
+
+function getRandomImage() {
+    const images = ['image1.png', 'image2.png', 'image3.png', 'image4.png', 'image5.png'];
+    const randomIndex = Math.floor(Math.random() * images.length);
+    console.log(randomIndex);
+    return 'imgs/'+images[randomIndex];
+}
+
+document.getElementById('randomImage').src = getRandomImage();

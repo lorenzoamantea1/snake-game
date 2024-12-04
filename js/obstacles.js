@@ -3,7 +3,7 @@ class Obstacle {
         this.gridWidth = gridWidth;
         this.gridHeight = gridHeight;
         this.positions = [];
-        this.obstaclesCount = 0; 
+        this.obstaclesCount = 0;
 
     }
 
@@ -33,11 +33,11 @@ class Obstacle {
             do {
                 startX = floor(random(this.gridWidth));
                 startY = floor(random(this.gridHeight));
-            } while (startX === 0 && startY === 0); 
+            } while (startX === 0 && startY === 0);
             const newPositions = this.generateShapePositions(shapeType, startX, startY);
-            
+
             if (this.isPositionValid(newPositions)) {
-                this.positions.push(...newPositions); 
+                this.positions.push(...newPositions);
                 this.obstaclesCount++;
                 break;
             }
@@ -47,7 +47,7 @@ class Obstacle {
             this.obstaclesCount++;
         }
     }
-    
+
 
     generateShapePositions(shapeType, x, y) {
         let shapePositions = [];
@@ -57,7 +57,7 @@ class Obstacle {
                 for (let i = 0; i < 3; i++) {
                     shapePositions.push(
                         horizontal ? createVector((x + i) % this.gridWidth, y)
-                                   : createVector(x, (y + i) % this.gridHeight)
+                            : createVector(x, (y + i) % this.gridHeight)
                     );
                 }
                 break;
