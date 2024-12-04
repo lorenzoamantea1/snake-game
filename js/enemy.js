@@ -143,10 +143,13 @@ class Enemy {
     show() {
         if (!this.visible) return;
 
-        fill(209, 0, 255);
+        fill(150, 0, 200);
         noStroke();
-        for (let segment of this.body) {
-            rect(segment.x, segment.y, 1, 1);
+        rect(this.body[0].x, this.body[0].y, 1, 1);
+
+        fill(209, 0, 255);
+        for (let i = 1; i < this.body.length; i++) {
+            rect(this.body[i].x, this.body[i].y, 1, 1);
         }
     }
 }

@@ -11,6 +11,9 @@ let gridWidth = 45;
 let gridHeight = 45;
 let numObstacles = 20;
 
+let isPaused = false;
+let isBlurApplied = false;
+
 function setup() {
     canvasSize = min(windowWidth, windowHeight) * 0.9;
     resolution = floor(canvasSize / max(gridWidth, gridHeight));
@@ -66,6 +69,23 @@ function setup() {
 }
 
 function draw() {
+    if (isPaused) {
+        if (!isBlurApplied) {
+            filter(BLUR, 5); 
+            isBlurApplied = true;  
+        }
+        fill(0,255,0); 
+        textSize(50);
+        textAlign(CENTER, CENTER);
+        text("Game Paused", width / 2, height / 2);
+        return; 
+    } else {
+        if (isBlurApplied) {
+            isBlurApplied = false;  
+            filter(BLUR, 0); 
+        }
+    }
+
     snake.checkBoostStatus();
 
     loadBestScore();
@@ -124,5 +144,7 @@ function keyPressed() {
         snake.setDir(1, 0);
     } else if (key === 'b' || key === 'B' || keyCode === 66) {
         snake.activateBoost();
+    } else if (key === 'p' || key === 'P') {
+        isPaused = !isPaused;  
     }
 }

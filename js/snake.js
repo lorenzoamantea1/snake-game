@@ -98,9 +98,13 @@ class Snake {
 
     show() {
         noStroke();
+
+        fill(50, 150, 50);
+        rect(this.body[0].x, this.body[0].y, 1, 1);
+
         fill(168, 255, 0);
-        for (let segment of this.body) {
-            rect(segment.x, segment.y, 1, 1);
+        for (let i = 1; i < this.body.length; i++) {
+            rect(this.body[i].x, this.body[i].y, 1, 1);
         }
     }
 }
