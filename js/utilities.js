@@ -13,12 +13,12 @@ function showGameOver() {
     document.querySelector('canvas').style.display = 'none';
     document.getElementById("game-over").style.display = 'block';
     document.getElementById("final-score").innerText = snake.score;
-    document.getElementById('randomImage').src = getRandomImage();
 }
 function restartGame() {
     document.querySelector('canvas').style.display = 'block';
     document.getElementById("game-over").style.display = 'none';
     document.getElementById("final-score").innerText = snake.score;
+    document.getElementById('randomImage').src = getRandomImage();
     snake.reset();
     enemy.reset();
     updateScoreDisplay();
