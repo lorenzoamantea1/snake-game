@@ -71,8 +71,8 @@
     color: #00FF00;
     position: fixed;
     flex-direction: column;
-    top: 55px;
-    bottom: 55px;
+    top: 10%;
+    bottom: 10%;
     right: 75px;
     font-size: 14px;
     animation: menu-slide-in 0.5s ease-in-out;
